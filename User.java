@@ -1,9 +1,9 @@
 import java.util.*;
 
 class User{
-    public static void Interface(){
+    public static void Interface(ArrayList<Person> CB){
         Scanner s = new Scanner(System.in);
-        ArrayList<Person> CB = new ArrayList<Person>();
+        //ArrayList<Person> CB = new ArrayList<Person>();
         while( true ){
             System.out.println("0. 新增資料");
             System.out.println("1. 顯示所有資料");
@@ -17,8 +17,16 @@ class User{
             switch(choose){
                 case 0:
                     Person.addPerson(CB);
+                    break;
                 case 1:
                     Person.showAllPerson(CB);
+                    break;
+                case 2:
+                    System.out.println("1.姓名 2.生日 3.電話 4.關係 5.Email");
+                    String digit = s.nextLine(); // delet nextInt() /r
+                    digit = s.nextLine();
+                    String[] tokens = digit.split("\\s+"); 
+                    Person.showSpecific(CB, tokens );
                     break;
                 case 6:
                     return;

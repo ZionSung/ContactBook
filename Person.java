@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 public class Person{
     String name;
@@ -8,77 +9,148 @@ public class Person{
     String email;
 
     public static void showAllPerson( ArrayList<Person> CB ){
+        System.out.println("================================================================================");
+        System.out.println("                                SHOW ALL PERSON");
+        System.out.println("================================================================================");
         for( int i = 0; i < CB.size(); i++ ){
             Person p = CB.get(i);
-            System.out.println("Name: "+p.name+" Birth: "+ p.birth + " Phone: " + p.phone+"Relation: " + p.relation + " Email: "+ p.email);
+            System.out.printf("Name: %-4s", p.name );
+            System.out.printf("Birthe: %-5s", p.birth );
+            System.out.printf("Phone: %-12s", p.phone );
+            System.out.printf("Relation: %-3s", p.relation );
+            System.out.printf("Email: %-20s\n", p.email );
+            //System.out.println("Name: "+p.name+" Birth: "+ p.birth + " Phone: " + p.phone+" Relation: " + p.relation + " Email: "+ p.email);
         }
     }
 
-    public static void addPerson( ArrayList<Person> CB ){
+    /*
+    public static void sorting( ArrayList<Person> CB ){
+        // sorting
+        System.out.println("==================================");
+        System.out.println("1. 由大到小");
+        System.out.println("2. 由小到大");
+        System.out.println("==================================");
         Scanner s = new Scanner(System.in);
-        Person p = new Person();
-        // Name
-        while( true ){
-            System.out.print("Name:");
-            String name = s.nextLine();
-            p.name = checkName(name);
-            //System.out.println(p.name);
-            break;
+        
+        int sorting = s.nextInt();
+        if( sorting == 1 ){
+            
         }
+        else{
 
-        // Birth
-        while( true ){
-            System.out.print("Birth(MMDD):");
-            String birth = s.next();
-            if(checkBirth(birth)){
-                p.birth = birth;
-                //System.out.println(p.birth);
+        }
+    }
+    */
+
+    public static void showSpecific( ArrayList<Person> CB, String[] tokens ){
+
+        System.out.println("================================================================================");
+        System.out.println("                                Show Specific Colume");
+        System.out.println("================================================================================");
+
+        for( int i = 0; i < CB.size(); i++ ){
+            Person p = CB.get(i);
+            for( String token : tokens ){
+                switch(token){
+                    case "1":
+                        System.out.printf("Name: %-4s  ", p.name );
+                        break;
+                    case "2":
+                        System.out.printf("Birth: %-4s  ", p.birth );
+                        break;
+                    case "3":
+                        System.out.printf("Phone: %-4s  ", p.phone );
+                        break;
+                    case "4":
+                        System.out.printf("Relation: %-4s  ", p.relation );
+                        break;
+                    case "5":
+                        System.out.printf("Email: %-4s  ", p.email );
+                        break;
+                }
+            }
+            System.out.println();
+        }
+        System.out.println("================================================================================\n");
+    }
+
+    public static void addPerson( ArrayList<Person> CB ){
+        try{
+            FileWriter writer = new FileWriter("contactbook.txt", true );
+            Scanner s = new Scanner(System.in);
+            Person p = new Person();
+            // Name
+            while( true ){
+                System.out.print("Name:");
+                String name = s.nextLine();
+                p.name = checkName(name);
+                int size = CB.size()+1;
+                writer.write("\n"+ size +".   " + p.name);
                 break;
             }
-        }
 
-        // phone
-        while(true){
-            System.out.print("Phone(0912-345678):");
-            String phone = s.next();
-            if( checkPhone(phone)){
-                p.phone = phone;
-                //System.out.println(p.phone);
+            // Birth
+            while( true ){
+                System.out.print("Birth(MMDD):");
+                String birth = s.next();
+                if(checkBirth(birth)){
+                    p.birth = birth;
+                    writer.write("       " + p.birth);
+                    //System.out.println(p.birth);
+                    break;
+                }
+            }
+
+            // phone
+            while(true){
+                System.out.print("Phone(0912-345678):");
+                String phone = s.next();
+                if( checkPhone(phone)){
+                    p.phone = phone;
+                    writer.write("        " + p.phone);
+                    break;
+                }
+            }
+
+            // relation
+            while( true ){
+                System.out.println("Relation:");
+                System.out.println("1.家人 2.同學 3~.其他");
+                int r = s.nextInt();
+                switch(r){
+                    case 1:
+                        p.relation = "家人";
+                        break;
+                    case 2:
+                        p.relation = "同學";
+                        break;
+                    default:
+                        p.relation = "其他";
+                        break;
+                }
+                //System.out.println(p.relation);
+                writer.write("    " + p.relation);
                 break;
             }
-        }
 
-        // relation
-        while( true ){
-            System.out.println("Relation:");
-            System.out.println("1.家人 2.同學 3~.其他");
-            int r = s.nextInt();
-            switch(r){
-                case 1:
-                    p.relation = "家人";
+            // email
+            while(true){
+                System.out.print("Email:");
+                String email = s.next();
+                if( checkEmail(email)){
+                    p.email = email;
+                    writer.write("        " + p.email);
                     break;
-                case 2:
-                    p.relation = "同學";
-                    break;
-                default:
-                    p.relation = "其他";
-                    break;
+                }
             }
-            System.out.println(p.relation);
-            break;
-        }
+            writer.close();
+            CB.add(p);
 
-        // email
-        while(true){
-            System.out.print("Email:");
-            String email = s.next();
-            if( checkEmail(email)){
-                p.email = email;
-                break;
-            }
         }
-
-        CB.add(p);
+        catch( IOException e ){
+            System.out.println("An error accurred");
+            e.printStackTrace();
+        }
     }
 
     public static String checkName(String name){

@@ -16,7 +16,9 @@ class ContactBook{
 		Scanner s = new Scanner(System.in);
 		ArrayList<Person> CB = new ArrayList<Person>();
 
-		Person.addPerson(CB);
+		System.out.println("Loading...");
+		Use.CreateFile();
+		Use.Load(CB);
 		// Main Select
 		while( true ){
 			System.out.println("===============");
@@ -31,7 +33,7 @@ class ContactBook{
 					System.out.println("===============");
 					System.out.println("User Interface");
 					System.out.println("===============");
-					User.Interface();
+					User.Interface(CB);
 					break;
 				case 2:
 					System.out.println("====================");
