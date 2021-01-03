@@ -25,8 +25,47 @@ class User{
                     System.out.println("1.姓名 2.生日 3.電話 4.關係 5.Email");
                     String digit = s.nextLine(); // delet nextInt() /r
                     digit = s.nextLine();
+
                     String[] tokens = digit.split("\\s+"); 
+                    // choose ascending or descending 
+                    System.out.println("1. 由小到大");
+                    System.out.println("2. 由大到小");
+                    int ad = s.nextInt();
+                    String selet = tokens[0];
+                    if( ad == 1 ){
+                        switch(selet){
+                            case "1":
+                                Collections.sort(CB, Person.NameComparatorA);
+                                break;
+                            case "2":
+                                Collections.sort(CB, Person.birthComparatorA);
+                                break;
+                        }
+                    }
+                    else{
+                        switch(selet){
+                            case "1":
+                                Collections.sort(CB, Person.NameComparatorD);
+                                break;
+                            case "2":
+                                Collections.sort(CB, Person.birthComparatorD);
+                                break;
+                        }
+                    }
                     Person.showSpecific(CB, tokens );
+                    break;
+                case 3:
+                    // search 
+                    System.out.println("Searching ->");
+                    System.out.println("1.依姓名");
+                    System.out.println("2.依生日");
+                    int searching = s.nextInt();
+                    if(searching == 1){
+                        Person.SeachingName(CB);
+                    }
+                    else{
+
+                    }
                     break;
                 case 6:
                     return;

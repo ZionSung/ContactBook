@@ -23,24 +23,89 @@ public class Person{
         }
     }
 
-    /*
-    public static void sorting( ArrayList<Person> CB ){
-        // sorting
-        System.out.println("==================================");
-        System.out.println("1. 由大到小");
-        System.out.println("2. 由小到大");
-        System.out.println("==================================");
-        Scanner s = new Scanner(System.in);
-        
-        int sorting = s.nextInt();
-        if( sorting == 1 ){
-            
-        }
-        else{
+    /* 
+        Comparator Section
+    */
+    public static Comparator<Person> NameComparatorA = new Comparator<Person>(){
+        public int compare( Person p1, Person p2 ){
+            String PersonName1 = p1.name;
+            String PersonName2 = p2.name;
+
+            // ascending order
+            return PersonName1.compareTo(PersonName2); 
 
         }
-    }
+    };
+
+    public static Comparator<Person> NameComparatorD = new Comparator<Person>(){
+        public int compare( Person p1, Person p2 ){
+            String PersonName1 = p1.name;
+            String PersonName2 = p2.name;
+
+            // descending order
+            return PersonName2.compareTo(PersonName1); 
+
+        }
+    };
+
+    public static Comparator<Person> birthComparatorA = new Comparator<Person>(){
+        public int compare( Person p1, Person p2 ){
+            String PersonBirth1 = p1.birth;
+            String PersonBirth2 = p2.birth;
+
+            return PersonBirth1.compareTo(PersonBirth2);
+        }
+    };
+
+    public static Comparator<Person> birthComparatorD = new Comparator<Person>(){
+        public int compare( Person p1, Person p2 ){
+            String PersonBirth1 = p1.birth;
+            String PersonBirth2 = p2.birth;
+            return PersonBirth2.compareTo(PersonBirth1);
+        }
+    };
+
+    public static Comparator<Person> phoneComparatorA = new Comparator<Person>(){
+        public int compare( Person p1, Person p2 ){
+            String PersonPhone1 = p1.phone;
+            String PersonPhone2 = p2.phone;
+            return PersonPhone1.compareTo(PersonPhone2);
+        }
+    };
+
+    public static Comparator<Person> phoneComparatorD = new Comparator<Person>(){
+        public int compare( Person p1, Person p2 ){
+            String PersonPhone1 = p1.phone;
+            String PersonPhone2 = p2.phone;
+            return PersonPhone2.compareTo(PersonPhone1);
+        } 
+    };
+
+    /*
+        Searching Section
     */
+    public static void SeachingName(ArrayList<Person> CB){
+        Scanner s = new Scanner(System.in);
+        System.out.println("Please enter name: ");
+        String searchingName = s.nextLine();
+        searchingName = checkName(searchingName);
+        System.out.println("==========================================================================================");
+        System.out.println("                                 Searching According to Name");
+        System.out.println("==========================================================================================");
+        for( Person p : CB ){
+            if(p.name != null && p.name.contains(searchingName)){
+                System.out.printf("Name: %-4s", p.name );
+                System.out.printf("Birthe: %-5s", p.birth );
+                System.out.printf("Phone: %-12s", p.phone );
+                System.out.printf("Relation: %-3s", p.relation );
+                System.out.printf("Email: %-20s\n", p.email );
+            }
+        }
+        System.out.println("==========================================================================================");
+
+    }
+
+    
 
     public static void showSpecific( ArrayList<Person> CB, String[] tokens ){
 

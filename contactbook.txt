@@ -7,4 +7,3 @@ No.  姓名         生日        手機            關係        Email
 4.   宋得榮       0223        0977-287838    同學        1122overcomer@gmail.com
 5.   宋主欣       0409        0977-287838    家人        1122overcomer@gmail.com
 6.   賴怡真       1003        0977-287838    家人        1122overcomer@gmail.com
-7.   涂嘉欣       1122        0977-287838    家人        1122overcomer@gmail.com
