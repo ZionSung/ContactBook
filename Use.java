@@ -102,11 +102,27 @@ class Use{
             e.printStackTrace();
         }
     }
-    /*
-    public static void Load(){
+    
+    public static void Relaod( ArrayList<Person> CB ){
         try{
-            File 
+            FileWriter writer = new FileWriter("contactbook.txt", false );
+            writer.write("========================================================================================\n");
+                writer.write("No.  姓名         生日        手機            關係        Email\n");
+                writer.write("----------------------------------------------------------------------------------------");
+
+            for( Person p : CB ){
+                writer.write("\n" + (CB.indexOf(p)+1)+".   " + p.name);
+                writer.write("       " + p.birth);
+                writer.write("        " + p.phone);
+                writer.write("    " + p.relation);
+                writer.write("        " + p.email);
+            }
+
+            writer.close();
+        }
+        catch( IOException e ){
+            System.out.println("An error accurred");
+            e.printStackTrace();
         }
     }
-    */
 }

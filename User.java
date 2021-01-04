@@ -40,6 +40,15 @@ class User{
                             case "2":
                                 Collections.sort(CB, Person.birthComparatorA);
                                 break;
+                            case "3":
+                                Collections.sort(CB, Person.phoneComparatorA);
+                                break;
+                            case "4":
+                                Collections.sort(CB, Person.relationComparatorA);
+                                break;
+                            case "5":
+                                Collections.sort( CB, Person.emailComparatorA);
+                                break;
                         }
                     }
                     else{
@@ -49,6 +58,15 @@ class User{
                                 break;
                             case "2":
                                 Collections.sort(CB, Person.birthComparatorD);
+                                break;
+                            case "3":
+                                Collections.sort(CB, Person.phoneComparatorD);
+                                break;
+                            case "4":
+                                Collections.sort(CB, Person.relationComparatorD);
+                                break;
+                            case "5":
+                                Collections.sort(CB, Person.emailComparatorD);
                                 break;
                         }
                     }
@@ -61,12 +79,26 @@ class User{
                     System.out.println("2.依生日");
                     int searching = s.nextInt();
                     if(searching == 1){
-                        Person.SeachingName(CB);
+                        Person.SeachingName(CB, 1);
                     }
                     else{
-
+                        Person.SearchingBirth(CB, 1);
                     }
                     break;
+                case 4:
+                    // search 
+                    System.out.println("Searching first and Set ->");
+                    System.out.println("1.依姓名");
+                    System.out.println("2.依生日");
+                    int set = s.nextInt();
+                    if(set == 1){
+                        Person.SeachingName(CB, 2);
+                    }
+                    else{
+                        Person.SearchingBirth(CB, 2);
+                    }
+                    break;
+                    
                 case 6:
                     return;
                 case 7:
@@ -76,6 +108,7 @@ class User{
                     System.out.println("Log out!");
                     System.exit(0);
             }
+            Use.Relaod(CB);
         }
     }
 }

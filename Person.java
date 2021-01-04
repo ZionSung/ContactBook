@@ -81,10 +81,42 @@ public class Person{
         } 
     };
 
+    public static Comparator<Person> relationComparatorA = new Comparator<Person>(){
+        public int compare( Person p1, Person p2 ){
+            String relation1 = p1.relation;
+            String relation2 = p2.relation;
+            return relation1.compareTo(relation2);
+        }
+    };
+
+    public static Comparator<Person> relationComparatorD = new Comparator<Person>(){
+        public int compare( Person p1, Person p2 ){
+            String relation1 = p1.relation;
+            String relation2 = p2.relation;
+            return relation2.compareTo(relation1);
+        }
+    };
+
+    public static Comparator<Person> emailComparatorA = new Comparator<Person>(){
+        public int compare( Person p1, Person p2 ){
+            String email1 = p1.email;
+            String email2 = p2.email;
+            return email2.compareTo(email1);
+        }
+    };
+
+    public static Comparator<Person> emailComparatorD = new Comparator<Person>(){
+        public int compare( Person p1, Person p2 ){
+            String email1 = p1.email;
+            String email2 = p2.email;
+            return email2.compareTo(email1);
+        }
+    };
+
     /*
         Searching Section
     */
-    public static void SeachingName(ArrayList<Person> CB){
+    public static void SeachingName(ArrayList<Person> CB, int SearchOrSet ){
         Scanner s = new Scanner(System.in);
         System.out.println("Please enter name: ");
         String searchingName = s.nextLine();
@@ -102,6 +134,82 @@ public class Person{
             }
         }
         System.out.println("==========================================================================================");
+
+    }
+
+    public static void SearchingBirth( ArrayList<Person> CB, int SearchOrSet ){
+        Scanner s = new Scanner(System.in);
+        System.out.println("Please enter birth: ");
+        String searchingBirth = s.next();
+        int[] index = new int[CB.size()];
+        int i = 0;
+        int counter = 1;
+        System.out.println("==========================================================================================");
+        System.out.println("                                 Searching According to Name");
+        System.out.println("==========================================================================================");
+        for( Person p : CB ){
+            if( p.birth != null && p.birth.contains(searchingBirth)){
+                System.out.printf("%d. ", counter);
+                System.out.printf("Name: %-4s", p.name );
+                System.out.printf("Birthe: %-5s", p.birth );
+                System.out.printf("Phone: %-12s", p.phone );
+                System.out.printf("Relation: %-3s", p.relation );
+                System.out.printf("Email: %-20s\n", p.email );
+                counter++;
+                if( SearchOrSet == 2 ){
+                    index[i] = CB.indexOf(p);
+                    i++;
+                }
+            }
+        }
+
+        if( SearchOrSet == 2 ){
+            System.out.println("==========================================================================================");
+            System.out.println("Which one you want to change");
+            int setNum = s.nextInt();
+            int point = index[setNum-1];
+            Person setPerson = CB.get(point);
+            System.out.printf("Name: %-4s", setPerson.name );
+            System.out.printf("Birthe: %-5s", setPerson.birth );
+            System.out.printf("Phone: %-12s", setPerson.phone );
+            System.out.printf("Relation: %-3s", setPerson.relation );
+            System.out.printf("Email: %-20s\n", setPerson.email );
+            System.out.println("想要修改的項目");
+            System.out.println("1.姓名 2.生日 3.手機 4.關係 5.Email");
+            String setChoose = s.nextLine(); // skip nextInt /r
+            setChoose = s.nextLine();
+            String[] tokens = setChoose.split("\\s+");
+            for( String token : tokens ){
+                switch(token){
+                    case "1":
+                        System.out.print("Change Name to -> ");
+                        String setNewName = s.nextLine();
+                        setNewName = checkName(setNewName);
+                        CB.get(point).name = setNewName;
+                        break;
+                    case "2":
+                        System.out.print("Change birth to -> ");
+                        String setNewbirth = s.next();
+                        CB.get(point).birth = setNewbirth;
+                        break;
+                    case "3":
+                        System.out.print("Change phone to -> ");
+                        String setNewPhone = s.next();
+                        CB.get(point).phone = setNewPhone;
+                        break;
+                    case "4":
+                        System.out.print("Change relation to -> ");
+                        String setNewRelation = s.next();
+                        CB.get(point).relation = setNewRelation;
+                        break;
+                    case "5":
+                        System.out.print("Change email to -> ");
+                        String setNewEmail = s.next();
+                        CB.get(point).email = setNewEmail;
+                        break;
+                }
+            }
+        }
 
     }
 
@@ -138,6 +246,7 @@ public class Person{
         }
         System.out.println("================================================================================\n");
     }
+
 
     public static void addPerson( ArrayList<Person> CB ){
         try{
