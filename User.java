@@ -98,7 +98,18 @@ class User{
                         Person.SearchingBirth(CB, 2);
                     }
                     break;
-                    
+                case 5:
+                    System.out.println("Searching first and Set ->");
+                    System.out.println("1.依姓名");
+                    System.out.println("2.依生日");
+                    int delet = s.nextInt();
+                    if(delet == 1){
+                        Person.SeachingName(CB, 3);
+                    }
+                    else{
+                        Person.SearchingBirth(CB, 3);
+                    }
+                    break;
                 case 6:
                     return;
                 case 7:

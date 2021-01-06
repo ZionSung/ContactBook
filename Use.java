@@ -18,7 +18,7 @@ class Use{
             }
             System.out.println("Login Error");
             return false;
-        } catch( FileNotFoundException e ){
+        } catch( FileNotFoundException e ){ // FileNotFoundException e
             System.out.println("Login Error");
             return false;
         }
@@ -47,7 +47,7 @@ class Use{
                 
             }
         }
-        catch( IOException e ){
+        catch( IOException e ){ // IOException e
             System.out.println("An error occured");
             e.printStackTrace();
         }
@@ -107,8 +107,8 @@ class Use{
         try{
             FileWriter writer = new FileWriter("contactbook.txt", false );
             writer.write("========================================================================================\n");
-                writer.write("No.  姓名         生日        手機            關係        Email\n");
-                writer.write("----------------------------------------------------------------------------------------");
+            writer.write("No.  姓名         生日        手機            關係        Email\n");
+            writer.write("----------------------------------------------------------------------------------------");
 
             for( Person p : CB ){
                 writer.write("\n" + (CB.indexOf(p)+1)+".   " + p.name);
