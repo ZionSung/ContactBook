@@ -9,19 +9,48 @@ public class Person{
     String email;
 
     public static void showAllPerson( ArrayList<Person> CB ){
+        Scanner s = new Scanner(System.in);
+        int page = 0;
         System.out.println("================================================================================");
         System.out.println("                                SHOW ALL PERSON");
         System.out.println("================================================================================");
+        
         for( int i = 0; i < CB.size(); i++ ){
+            page++;
             Person p = CB.get(i);
+            System.out.print( (CB.indexOf(p)+1) + ". ");
             System.out.printf("Name: %-4s", p.name );
             System.out.printf("Birthe: %-5s", p.birth );
             System.out.printf("Phone: %-12s", p.phone );
             System.out.printf("Relation: %-3s", p.relation );
             System.out.printf("Email: %-20s\n", p.email );
+            if( page == 10 ){
+                System.out.println("================================================================================");
+                System.out.println("Next Page? (y/n)");
+                String yn = s.next();
+                if( yn.equals("y")){
+                    continue;
+                }
+                else{
+                    return;
+                }
+            }
+            else if( page == CB.size()){
+                System.out.println("================================================================================");
+                System.out.println("Last Page? (y/n)");
+                String yn = s.next();
+                if( yn.equals("y")){
+                    i = -1;
+                    page = 0;
+                }
+                else{
+                    return;
+                }
+            }
             //System.out.println("Name: "+p.name+" Birth: "+ p.birth + " Phone: " + p.phone+" Relation: " + p.relation + " Email: "+ p.email);
         }
     }
+
 
     /* 
         Comparator Section

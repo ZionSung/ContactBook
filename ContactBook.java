@@ -15,6 +15,9 @@ class ContactBook{
 
 		Scanner s = new Scanner(System.in);
 		ArrayList<Person> CB = new ArrayList<Person>();
+		ArrayList<String> RelationStore = new ArrayList<String>(); 
+
+		Relation.RelationInit(RelationStore);
 
 		System.out.println("Loading...");
 		Use.CreateFile();
@@ -33,7 +36,7 @@ class ContactBook{
 					System.out.println("===============");
 					System.out.println("User Interface");
 					System.out.println("===============");
-					User.Interface(CB);
+					NewUser.Interface(CB,RelationStore);
 					break;
 				case 2:
 					System.out.println("====================");
