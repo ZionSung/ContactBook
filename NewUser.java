@@ -36,7 +36,7 @@ class NewUser{
                         Person.SeachingName(CB, 1);
                     }
                     else{
-                        Person.SearchingBirth(CB, 1);
+                        Search.Birth(CB, RelationStore, 1);
                     }
                     break;
                 case 4:
@@ -49,7 +49,7 @@ class NewUser{
                         Person.SeachingName(CB, 2);
                     }
                     else{
-                        Person.SearchingBirth(CB, 2);
+                        Search.Birth(CB, RelationStore, 2);
                     }
                     break;
                 case 5:
@@ -61,7 +61,7 @@ class NewUser{
                         Person.SeachingName(CB, 3);
                     }
                     else{
-                        Person.SearchingBirth(CB, 3);
+                        Search.Birth(CB, RelationStore, 3);
                     }
                     break;
                 case 6:
