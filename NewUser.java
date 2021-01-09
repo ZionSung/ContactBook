@@ -16,7 +16,7 @@ class NewUser{
             int choose = s.nextInt();
             switch(choose){
                 case 0:
-                    Person.addPerson(CB);
+                    Person.addPerson(CB, RelationStore);
                     break;
                 case 1:
                     System.out.println("Show Person");

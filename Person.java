@@ -370,7 +370,7 @@ public class Person{
     }
 
 
-    public static void addPerson( ArrayList<Person> CB ){
+    public static void addPerson( ArrayList<Person> CB, ArrayList<String> RelationStore ){
         try{
             FileWriter writer = new FileWriter("contactbook.txt", true );
             Scanner s = new Scanner(System.in);
@@ -411,19 +411,11 @@ public class Person{
             // relation
             while( true ){
                 System.out.println("Relation:");
-                System.out.println("1.家人 2.同學 3~.其他");
-                int r = s.nextInt();
-                switch(r){
-                    case 1:
-                        p.relation = "家人";
-                        break;
-                    case 2:
-                        p.relation = "同學";
-                        break;
-                    default:
-                        p.relation = "其他";
-                        break;
+                for( String r : RelationStore ){
+                    System.out.println((RelationStore.indexOf(r)+1) + ". " + r );
                 }
+                int choose = s.nextInt();
+                p.relation = RelationStore.get(choose-1);
                 //System.out.println(p.relation);
                 writer.write("    " + p.relation);
                 break;

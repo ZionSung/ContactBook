@@ -22,10 +22,8 @@ class ContactBook{
 		System.out.println("Loading...");
 		Use.CreateFile();
 		Use.Load(CB);
-		Relation.Load(RelationStore);
 		// Main Select
 		while( true ){
-			Relation.Load(RelationStore);
 			System.out.println("===============");
 			System.out.println("Main Interface");
 			System.out.println("===============");

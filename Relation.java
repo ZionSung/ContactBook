@@ -55,6 +55,7 @@ class Relation {
     public static void Update( ArrayList<String> RelationStore ){
         try{
             FileWriter writer = new FileWriter("Relation.txt", false );
+            System.out.println(RelationStore.size());
             for( int counter = 0; counter < RelationStore.size(); counter++ ){
                 writer.write(RelationStore.get(counter));
                 writer.write("\n");
