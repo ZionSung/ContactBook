@@ -14,7 +14,7 @@ class Relation {
                 writer.close();
             }
 
-            Update(RelationStore);
+            Load(RelationStore);
 
         }
         catch( IOException e ){
@@ -22,7 +22,7 @@ class Relation {
         }
     }
 
-    public static void Update(ArrayList<String> RelationStore){
+    public static void Load(ArrayList<String> RelationStore){
         try{
             File RelBook = new File("Relation.txt");
             Scanner s = new Scanner(RelBook);
@@ -35,4 +35,33 @@ class Relation {
             System.out.println("Error");
         }
     }
+
+    public static void addRelation( ArrayList<String> RelationStore ){
+        System.out.println("Which relation you want to add ");
+        System.out.println("=>");
+        Scanner s = new Scanner(System.in);
+        String relation = s.next();
+        RelationStore.add(relation);
+        System.out.println("Add another relation?(y/n)");
+        String choose = s.next();
+        if( choose.equals("y")){
+            addRelation(RelationStore);
+        }
+        else{
+            return;
+        }
+    }
+
+    public static void Update( ArrayList<String> RelationStore ){
+        try{
+            FileWriter writer = new FileWriter("Relation.txt", false );
+            for( int counter = 0; counter < RelationStore.size(); counter++ ){
+                writer.write(RelationStore.get(counter));
+                writer.write("\n");
+            }
+            writer.close();
+        }catch(IOException e){
+            System.out.println("An error occurred");
+        }
+    } 
 }

@@ -22,8 +22,10 @@ class ContactBook{
 		System.out.println("Loading...");
 		Use.CreateFile();
 		Use.Load(CB);
+		Relation.Load(RelationStore);
 		// Main Select
 		while( true ){
+			Relation.Load(RelationStore);
 			System.out.println("===============");
 			System.out.println("Main Interface");
 			System.out.println("===============");
@@ -42,7 +44,7 @@ class ContactBook{
 					System.out.println("====================");
 					System.out.println("Controller Interface");
 					System.out.println("====================");
-					Controller.Interface();
+					Controller.Interface(CB,RelationStore);
 					break;
 				default:
 					System.exit(0);
