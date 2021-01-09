@@ -36,7 +36,7 @@ class Call {
 
         Scanner s = new Scanner(System.in);
         String selet = s.nextLine();
-        String[] tokens = selet.split("\\s+");
+        String[] tokens = selet.split("\\s+"); 
         ArrayList<String> selectedRelation = new ArrayList<String>();
         for( String token : tokens ){
             int point = Integer.valueOf(token)-1;
