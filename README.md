@@ -1,5 +1,5 @@
 # ContactBook
-The contactbook is the Exam of 109-1 Java Class<\n>
+The contactbook is the Exam of 109-1 Java Class
 We need to finish all the operations in 7 hours and draw UML to finish it.
 
 
