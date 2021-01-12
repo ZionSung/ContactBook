@@ -2,9 +2,9 @@
 The contactbook is the Exam of 109-1 Java Class
 We need to finish all the operations in 7 hours and draw UML to finish it.
 
-==============================
-Operation Simple Introduction
-==============================
+==============================\n
+Operation Simple Introduction\n
+==============================\n
 1. User Interface
 - add new member
 - show members in some custom way
@@ -15,8 +15,8 @@ Operation Simple Introduction
 - add relation
 - Resort the contactbook order
 
-=======================================
-What skills that be used in the project
-=======================================
+=======================================\n
+What skills that be used in the project\n
+=======================================\n
 1. ArrayList<Person> // with my own designed object <Person>
 2. Use .txt file to store data ( Create, Load, and Update )
