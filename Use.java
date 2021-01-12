@@ -75,7 +75,7 @@ class Use{
                                 break;
                             case 1:
                                 p.name = token;
-                                System.out.println(token);
+                                //System.out.println(token);
                                 break;
                             case 2:
                                 p.birth = token;

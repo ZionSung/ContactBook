@@ -1,7 +1,7 @@
 import java.util.*;
 
 class User{
-    public static void Interface(ArrayList<Person> CB){
+    public static void Interface(ArrayList<Person> CB, ArrayList<String> RS ){
         Scanner s = new Scanner(System.in);
         //ArrayList<Person> CB = new ArrayList<Person>();
         while( true ){
@@ -16,7 +16,7 @@ class User{
             int choose = s.nextInt();
             switch(choose){
                 case 0:
-                    Person.addPerson(CB);
+                    Person.addPerson(CB,RS);
                     break;
                 case 1:
                     Person.showAllPerson(CB);
